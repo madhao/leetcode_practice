@@ -3,6 +3,16 @@ from numpy import array
 
 
 def spiralOrder(matrix: List[List[int]]) -> List[int]:
+    """This method finds answer to spiralOrder traversal of a m*n matrix.
+
+    Question: https://leetcode.com/explore/interview/card/top-interview-questions-hard/116/array-and-strings/828/
+
+    Args:
+        matrix (List[List[int]]): m*n matrix
+
+    Returns:
+        List[int]: spiral order traversal of input m*n matrix
+    """
     matrix = array(matrix)
     res = []
     while 1:
