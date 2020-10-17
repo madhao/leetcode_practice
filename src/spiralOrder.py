@@ -1,11 +1,12 @@
+"""LeetCode coding example."""
 from typing import List
 from numpy import array
 
 
 def spiralOrder(matrix: List[List[int]]) -> List[int]:
-    """This method finds answer to spiralOrder traversal of a m*n matrix.
+    """Code to find answer to spiralOrder traversal of a m*n matrix.
 
-    Question: https://leetcode.com/explore/interview/card/top-interview-questions-hard/116/array-and-strings/828/
+    Question: https://leetcode.com/problems/spiral-matrix/
 
     Args:
         matrix (List[List[int]]): m*n matrix
