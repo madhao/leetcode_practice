@@ -1,5 +1,6 @@
 """LeetCode coding example."""
 from typing import List
+from collections import Counter
 
 
 def fourSumCount(A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
@@ -15,18 +16,14 @@ def fourSumCount(A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
         int: count of sum as 0
     """
     counter = 0
+    X = [a + b for a in A for b in B]
+    Y = [c + d for c in C for d in D]
 
-    for a in A:
-        for b in B:
-            ab = a + b
-            for c in C:
-                abc = ab + c
-                for d in D:
-                    abcd = abc + d
-                    if abcd == 0:
-                        counter += 1
-                    else:
-                        continue
+    ys = Counter(Y)
+
+    for v in X:
+        if -v in ys:
+            counter += ys[-v]
 
     return counter
 
