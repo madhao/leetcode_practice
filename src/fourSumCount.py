@@ -1,6 +1,6 @@
 """LeetCode coding example."""
 from typing import List
-from collections import Counter
+from collections import Counter, defaultdict
 
 
 def fourSumCount(A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
@@ -15,15 +15,27 @@ def fourSumCount(A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
     Returns:
         int: count of sum as 0
     """
+    # counter = 0
+    # X = [a + b for a in A for b in B]
+    # Y = [c + d for c in C for d in D]
+
+    # ys = Counter(Y)
+
+    # for v in X:
+    #     if -v in ys:
+    #         counter += ys[-v]
+    # this code is from leetcode and is fasster than the code above as it does not have a n^2 complexity but lower
+    A, B, C, D = Counter(A), Counter(B), Counter(C), Counter(D)
+
+    first = defaultdict(int)
+    for i in A:
+        for j in B:
+            first[i + j] += A[i] * B[j]
     counter = 0
-    X = [a + b for a in A for b in B]
-    Y = [c + d for c in C for d in D]
-
-    ys = Counter(Y)
-
-    for v in X:
-        if -v in ys:
-            counter += ys[-v]
+    for c in C:
+        for d in D:
+            if -(c + d) in first:
+                counter += first[-(c + d)] * C[c] * D[d]
 
     return counter
 
